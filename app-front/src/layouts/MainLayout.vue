@@ -93,10 +93,10 @@ const linksList = [
     link: 'https://awesome.quasar.dev'
   },
   {
-    title: 'Pagina 2',
-    caption: 'Testando pagina 2',
+    title: 'Home',
+    caption: 'Testando Home',
     icon: 'favorite',
-    link: 'http://localhost:9000/#/pageDois'
+    link: 'http://localhost:9000/#/Home'
   },
   {
     title: 'Agendamento',

@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       data: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       hora: {
         type: Sequelize.TIME

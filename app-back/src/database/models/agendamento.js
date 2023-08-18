@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Agendamento.init({
-    data: DataTypes.DATE,
+    data: DataTypes.DATEONLY,
     hora: DataTypes.TIME,
     cpf: DataTypes.STRING
   }, {

@@ -27,8 +27,8 @@
         </q-carousel>
       </div>
     </div>
-    <div>
-      <h1>Proximo</h1>
+    <div class="titulo">
+      <h1>Notícias</h1>
     </div>
     <!--q-card-section-->
     <div>
@@ -71,4 +71,9 @@ export default {
 .example-item
   height: 290px
   width: 290px
+
+.titulo
+  display: flex
+  justify-content: center
+  //align-items: center
 </style>
