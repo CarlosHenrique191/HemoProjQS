@@ -2,11 +2,14 @@ import { ref } from 'vue'
 import useSupabase from 'boot/supabase'
 
 const user = ref(null)
+
 export default function useAuthUser () {
     const { supabase } = useSupabase()
     //LOGIN
+    //SUPABASE V1 = sighIn
+    //SUPABASE V2 = signInWithPassword
     const login = async ({ email, password }) => {
-        const { user, error } = await supabase.auth.sighIn({ email, password })
+        const { user, error } = await supabase.auth.signInWithPassword({ email, password })
         if(error) throw error
         return user
     }
@@ -28,12 +31,14 @@ export default function useAuthUser () {
     //REGISTER
     const register = async ({ email, password, ...meta }) => {
         const { user, error } = await supabase.auth.signUp(
-            { email, password },
             { 
-                data: meta,
-                redirectTo: `${window.location.origin}/me?fromEmail=registrationConfirmation`
-            }
-        )
+                email, password,
+                options: {
+                    data: meta,
+                    redirectTo: `${window.location.origin}/me?fromEmail=registrationConfirmation`
+                }
+            },
+        )   
         if(error) throw error
         return user
     }
@@ -51,6 +56,7 @@ export default function useAuthUser () {
     }
 
     return {
+        user,
         login,
         loginWithSocialProvider,
         logout,
