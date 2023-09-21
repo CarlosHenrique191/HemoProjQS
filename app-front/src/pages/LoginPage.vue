@@ -13,14 +13,14 @@
           type="email"
         />
         <q-input
-          label="Password"
+          label="Senha"
           v-model="form.password"
           outlined
           rounded
         />
         <div class="full-width q-pt-md">
           <q-btn
-            label="Login"
+            label="Entrar"
             color="primary"
             class="full-width"
             outline
@@ -31,12 +31,22 @@
         </div>
         <div class="full-width q-pt-md">
           <q-btn
-            label="Register"
+            label="Registre-se"
             color="primary"
             class="full-width"
-            size="lg"
+            size="sn"
             flat rounded
             to="/register"
+          />
+        </div>
+        <div class="full-width q-pt-md">
+          <q-btn
+            label="Esqueci a senha"
+            color="primary"
+            class="full-width"
+            size="sn"
+            flat rounded
+            to="/forgotPassword"
           />
         </div>
       </div>

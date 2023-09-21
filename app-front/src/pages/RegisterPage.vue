@@ -42,7 +42,7 @@
               class="full-width"
               rounded
               flat
-              :to="{ name: 'login' }"
+              to="/login"
             />
         </div>
       </div>
