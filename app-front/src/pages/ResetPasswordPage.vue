@@ -10,6 +10,7 @@
           v-model="password"
           outlined
           rounded
+          :rules="[val => (val && val.length >= 6) || 'Senha é necessaria com no minimo 6 digitos']"
         />
         <div class="full-width q-pt-md">
           <q-btn
@@ -30,14 +31,14 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import useAuthUser from 'src/composables/UseAuthUser'
-//import useNotify from 'src/composables/UseNotify'
+import useNotify from 'src/composables/UseNotify'
 import { useRouter, useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'resetPassword',
   setup () {
     const { resetPassword } = useAuthUser()
-    //const { notifyError, notifySuccess } = useNotify()
+    const { notifyError, notifySuccess } = useNotify()
     const router = useRouter()
     const route = useRoute()
     const token = route.query.token
@@ -47,13 +48,13 @@ export default defineComponent({
     const handlePasswordReset = async () => {
       await resetPassword(token, password.value)
       router.push({ path: '/login' })
-      //try {
-      //  await resetPassword(token, password.value)
-      //  notifySuccess('New Password Sent')
-      //  router.push({ path: '/login' })
-      //} catch (error) {
-      //  notifyError(error.message)
-      //}
+      try {
+        await resetPassword(token, password.value)
+        notifySuccess('A senha foi alterada com sucesso')
+        router.push({ path: '/login' })
+      } catch (error) {
+        notifyError(error.message)
+      }
     }
 
     return {

@@ -10,6 +10,7 @@
           v-model="email"
           outlined
           rounded
+          :rules="[val => (val && val.length > 0) || 'Email é necessario']"
           type="email"
         />
         <div class="full-width q-pt-md">
@@ -41,17 +42,22 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import useAuthUser from 'src/composables/UseAuthUser';
+import useNotify from 'src/composables/UseNotify'
 
 export default defineComponent({
   name: 'forgotPassword',
   setup () {
     const { sendPasswordRestEmail } = useAuthUser()
-
+    const { notifyError, notifySuccess } = useNotify()
     const email = ref('')
 
     const handleForgotPassword = async () => {
-      await sendPasswordRestEmail(email.value)
-      alert(`A solicitação para a alteração de senha foi enviado para: ${email.value}`) 
+      try {
+        await sendPasswordRestEmail(email.value)
+        notifySuccess(`A solicitação para a alteração de senha foi enviado para: ${email.value}`) 
+      } catch (error) {
+        notifyError(error.message)
+      }
     }
 
     return {

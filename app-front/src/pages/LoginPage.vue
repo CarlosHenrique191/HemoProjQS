@@ -10,6 +10,7 @@
           v-model="form.email"
           outlined
           rounded
+          :rules="[val => (val && val.length > 0) || 'Email é necessario']"
           type="email"
         />
         <q-input
@@ -17,6 +18,7 @@
           v-model="form.password"
           outlined
           rounded
+          :rules="[val => (val && val.length > 0) || 'Senha é necessaria']"
         />
         <div class="full-width q-pt-md">
           <q-btn
@@ -56,8 +58,9 @@
 </template>
 
 <script>
+import { defineComponent, onMounted, ref } from 'vue'
 import useAuthUser from 'src/composables/UseAuthUser'
-import { defineComponent, ref } from 'vue'
+import useNotify from 'src/composables/UseNotify'
 import { useRouter } from 'vue-router'
 
 export default defineComponent({
@@ -66,19 +69,27 @@ export default defineComponent({
   setup () {
     const router = useRouter()
 
-    const { login } = useAuthUser()
+    const { login, isLoggedIn } = useAuthUser()
+
+    const { notifyError, notifySuccess } = useNotify()
 
     const form = ref({
       email: 'ferreira.h@aluno.ifsp.edu.br',
-      password: '123456'
+      password: '1234567'
     })
 
+    onMounted(() => {
+      if (isLoggedIn) {
+        router.push({ path: '/me'})
+      }
+    })
     const handleLogin = async () => {
       try{
         await login(form.value)
+        notifySuccess('Login efetuado com sucesso')
         router.push({ path: '/me' })
       } catch (error) {
-        alert(error.message)
+        notifyError(error.message)
       }
     }
 
