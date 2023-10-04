@@ -32,6 +32,7 @@ export default function useApi () {
               user_id: user.value.id
             }
           ])
+          //.select('*')
         if (error) throw error
         return data
       }

@@ -75,7 +75,7 @@ const linksList = [
     path: '/agendamentoHemo'
   },
   {
-    title: 'Agendamento',
+    title: 'Agendamentos',
     caption: 'Em manutenção',
     icon: 'mdi-table-clock',
     path: '/listaAgendamentosPage'

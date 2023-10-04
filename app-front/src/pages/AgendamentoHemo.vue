@@ -2,18 +2,18 @@
   <q-page padding>
     <div class="q-pa-md" style="max-width: 400px">
     <q-form
-      @submit="Agendamento"
+      @submit="handleSubmit"
       class="q-gutter-md"
     >
       <q-date
-        v-model="agendamento.data"
+        v-model="form.data"
         mask="YYYY/MM/DD"
         title="Agendamento"
         subtitle="Data"
         color="red"
       />
       <q-time 
-        v-model="agendamento.hora"
+        v-model="form.hora"
         mask="HH:mm:ss" 
         :options="optionsFnTime1"
         format24h
@@ -21,11 +21,11 @@
       />
       <q-input
         filled
-        v-model="agendamento.cpf"
-        label="CPF *"
-        hint="CPF"
+        v-model="form.nome"
+        label="Nome *"
+        hint="Nome completo"
         lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Please type something']"
+        :rules="[ val => val && val.length > 0 || 'O nome é necessario']"
       />
       
       <div>
@@ -37,29 +37,40 @@
 </template>
 
 <script>
-import { useQuasar } from 'quasar'
-import { ref } from 'vue'
-import { api } from 'boot/axios'
-export default {
-  data: function () {
-    return {
-      agendamento: {
-        cpf: ref(null),
-        data: ref('2023/08/17'),
-        hora: ref('08:00:00')
-      },
-    };
-  },
-  methods: {
-    Agendamento: function () {
-        console.log(JSON.stringify(this.agendamento));
-        return api.post("Agendamento", this.agendamento)
-      },
-  },
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router';
+import useApi from 'src/composables/UseApi'
+import useNotify from 'src/composables/UseNotify'
+
+export default defineComponent ({
   name: 'AgendamentoHemo',
   setup () {
-    const $q = useQuasar()
+
+    const table = 'agendamento'
+    const router = useRouter()
+    const { post } = useApi()
+    const { notifyError, notifySuccess } = useNotify()
+
+    const form = ref({
+      nome: ref(null),
+      data: ref('2023/08/17'),
+      hora: ref('08:00:00')
+    })
+
+    const handleSubmit = async () => {
+      try {
+        await post(table, form.value)
+        notifySuccess('Agendado com sucesso')
+        //router.push({ path: 'home' })
+        //Temporario
+        router.push({ path: 'listaAgendamentosPage' })
+      } catch (error) {
+        notifyError(error.message)
+      }
+    }
     return {
+      handleSubmit,
+      form,
 
       optionsFnTime1 (hr) {
         if (hr < 8 || hr > 16) {
@@ -68,6 +79,6 @@ export default {
         return true
       },
     }
-  },
-}
+  }
+})
 </script>
