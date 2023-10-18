@@ -8,8 +8,17 @@
         :rows="agendamento"
         :columns="columns"
         row-key="id"
-
-      />
+      >
+        <template v-slot:body-cell-actions="props">
+          <q-td :props="props" class="q-gutter-x-sm">
+            <q-btn icon="mdi-delete-outline" color="negative" dense size="sm" @click="handleRemoveCategory(props.row)">
+              <q-tooltip>
+                Delete
+              </q-tooltip>
+            </q-btn>
+          </q-td>
+        </template>
+      </q-table> 
     </div>
   </q-page>
 </template>
@@ -18,8 +27,9 @@
 
 const columns = [
   { name: 'nome', align: 'center', label: 'Nome', field: 'nome', sortable: true },
-  { name: 'data', label: 'data', field: 'data', sortable: true },
-  { name: 'hora', label: 'hora', field: 'hora', sortable: true  },
+  { name: 'data', align: 'center', label: 'data', field: 'data', sortable: true },
+  { name: 'hora', align: 'center', label: 'hora', field: 'hora', sortable: true  },
+  { name: 'actions', align: 'center', label: 'deletar', field: 'actions', sortable: true },
 ]
 
 import { defineComponent, ref, onMounted } from 'vue'
