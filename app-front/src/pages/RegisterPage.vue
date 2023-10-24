@@ -79,7 +79,7 @@ export default defineComponent({
         await register(form.value)
         notifySuccess()
         router.push({
-          path: '/email-confirmation',
+          path: '/emailConfirmation',
           query: { email: form.value.email }
         })
       } catch (error) {

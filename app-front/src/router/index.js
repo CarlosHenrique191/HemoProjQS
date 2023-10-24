@@ -45,6 +45,9 @@ export default route(function (/* { store, ssrContext } */) {
     ) {
       return { path: '/login' }
     }
+
+    
+
   })
 
   return Router

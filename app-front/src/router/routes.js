@@ -20,7 +20,7 @@ const routes = [
       { path: 'me', component: () => import('pages/MePage.vue') },
       { path: 'home', component: () => import('src/pages/HomePage.vue') },
       { path: 'agendamentoHemo', component: () => import('src/pages/AgendamentoHemo.vue') },
-      { path: 'listaAgendamentosPage', component: () => import('src/pages/ListaAgendamentosPage.vue') }
+      { path: 'listaAgendamentosPage', component: () => import('src/pages/ListaAgendamentosPage.vue') },
     ],
     meta: {
       requiresAuth: true

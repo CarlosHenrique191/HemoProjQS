@@ -21,6 +21,6 @@
 
 <script>
 export default {
-  name: 'emailConfirmation',
+  name: 'EmailConfirmation',
 }
 </script>

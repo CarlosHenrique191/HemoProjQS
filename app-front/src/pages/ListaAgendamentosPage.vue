@@ -11,7 +11,7 @@
       >
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" class="q-gutter-x-sm">
-            <q-btn icon="mdi-delete-outline" color="negative" dense size="sm" @click="handleRemoveCategory(props.row)">
+            <q-btn icon="mdi-delete-outline" color="negative" dense size="sm" @click="handleRemoveAgendamentos(props.row)">
               <q-tooltip>
                 Delete
               </q-tooltip>
@@ -45,13 +45,13 @@ export default defineComponent({
   setup () {
     const agendamento = ref([])
     const loading = ref(true)
-    const router = useRouter()
     const $q = useQuasar()
     const { user } = useAuthUser()
     const table = 'agendamento'
 
-    const { list } = useApi()
-    const { notifyError } = useNotify()
+    const { list, remove } = useApi()
+    const { notifyError,notifySuccess } = useNotify()
+
     const handleListaAgendamentos = async () => {
       try {
         loading.value = true
@@ -61,6 +61,24 @@ export default defineComponent({
         notifyError(error.message)
       }
     }
+
+    const handleRemoveAgendamentos = async (agendamento) => {
+      try {
+        $q.dialog({
+          title: 'Confirm',
+          message: `Voce realmente quer deletar ${agendamento.name} ?`,
+          cancel: true,
+          persistent: true
+        }).onOk(async () => {
+          await remove(table, agendamento.id)
+          notifySuccess('deletado com sucesso')
+          handleListaAgendamentos()
+        })
+      } catch (error) {
+        notifyError(error.message)
+      }
+    }
+
     onMounted(() => {
       handleListaAgendamentos()
     })
@@ -68,7 +86,9 @@ export default defineComponent({
       columns,
       agendamento,
       handleListaAgendamentos,
-      loading
+      handleRemoveAgendamentos,
+      loading,
+      user
     }
   }
 })

@@ -69,17 +69,17 @@ const linksList = [
     path: '/home',
   },
   {
-    title: 'Agendamento',
+    title: 'Agendar',
     caption: 'Em manutenção',
     icon: 'mdi-blood-bag',
     path: '/agendamentoHemo'
   },
   {
-    title: 'Agendamentos',
+    title: 'Seus agendamentos',
     caption: 'Em manutenção',
     icon: 'mdi-table-clock',
     path: '/listaAgendamentosPage'
-  }
+  },
 ]
 
 export default defineComponent({

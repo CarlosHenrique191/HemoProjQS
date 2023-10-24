@@ -29,7 +29,7 @@
       />
       
       <div>
-        <q-btn label="Submit" type="submit" color="red"/>
+        <q-btn label="Confirmar" type="submit" color="red"/>
       </div>
     </q-form>
     </div>
