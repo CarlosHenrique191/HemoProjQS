@@ -80,6 +80,18 @@ const linksList = [
     icon: 'mdi-table-clock',
     path: '/listaAgendamentosPage'
   },
+  {
+    title: 'Seus exames de sangue',
+    caption: 'Previa',
+    icon: 'mdi-note-multiple-outline',
+    path: '/ExameRecentePage'
+  },
+  {
+    title: 'Seus Atestados',
+    caption: 'Previa',
+    icon: 'mdi-file-multiple',
+    path: '/AtestadoPage'
+  },
 ]
 
 export default defineComponent({

@@ -21,6 +21,8 @@ const routes = [
       { path: 'home', component: () => import('src/pages/HomePage.vue') },
       { path: 'agendamentoHemo', component: () => import('src/pages/AgendamentoHemo.vue') },
       { path: 'listaAgendamentosPage', component: () => import('src/pages/ListaAgendamentosPage.vue') },
+      { path: 'ExameRecentePage', component: () => import('src/pages/ExameRecentePage.vue') },
+      { path: 'AtestadoPage', component: () => import('src/pages/AtestadoPage.vue') },
     ],
     meta: {
       requiresAuth: true
