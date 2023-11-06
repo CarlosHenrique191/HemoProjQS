@@ -23,6 +23,7 @@ const routes = [
       { path: 'listaAgendamentosPage', component: () => import('src/pages/ListaAgendamentosPage.vue') },
       { path: 'ExameRecentePage', component: () => import('src/pages/ExameRecentePage.vue') },
       { path: 'AtestadoPage', component: () => import('src/pages/AtestadoPage.vue') },
+      { path: 'CadastroMedulaOsseaPage', component: () => import('src/pages/CadastroMedulaOsseaPage.vue') },
     ],
     meta: {
       requiresAuth: true

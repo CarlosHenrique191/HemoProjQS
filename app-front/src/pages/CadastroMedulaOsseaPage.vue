@@ -1,0 +1,76 @@
+<template>
+  <q-page padding>
+    <div class="q-pa-md" style="max-width: 400px">
+    <q-form
+      @submit="handleSubmit"
+      class="q-gutter-md"
+    >
+      <q-input
+        filled
+        v-model="form.nome"
+        label="Nome *"
+        hint="Nome completo"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'O nome é necessario']"
+      />
+      <q-input
+        filled
+        v-model="form.telefone"
+        label="Telefone *"
+        hint="Telefone(11000002222)"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'O Telefone é necessario']"
+      />
+      <div>
+        <q-btn label="Confirmar" type="submit" color="red"/>
+      </div>
+    </q-form>
+    </div>
+  </q-page>
+</template>
+
+<script>
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router';
+import useApi from 'src/composables/UseApi'
+import useNotify from 'src/composables/UseNotify'
+
+export default defineComponent ({
+  name: 'CadastroMedulaOsseaPage',
+  setup () {
+
+    const table = 'CadastroMedulaOssea'
+    const router = useRouter()
+    const { post } = useApi()
+    const { notifyError, notifySuccess } = useNotify()
+
+    const form = ref({
+      nome: ref(null),
+      telefone: ref('11000002222')
+    })
+
+    const handleSubmit = async () => {
+      try {
+        await post(table, form.value)
+        notifySuccess('Cadastro efetuado com sucesso')
+        //router.push({ path: 'home' })
+        //Temporario
+        router.push({ path: 'HomePage' })
+      } catch (error) {
+        notifyError(error.message)
+      }
+    }
+    return {
+      handleSubmit,
+      form,
+
+      optionsFnTime1 (hr) {
+        if (hr < 8 || hr > 16) {
+          return false
+        }
+        return true
+      },
+    }
+  }
+})
+</script>

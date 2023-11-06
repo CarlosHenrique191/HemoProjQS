@@ -92,6 +92,12 @@ const linksList = [
     icon: 'mdi-file-multiple',
     path: '/AtestadoPage'
   },
+  {
+    title: 'Medula Ossea',
+    caption: 'Seja um doador de medula ossea',
+    icon: 'mdi-heart',
+    path: '/CadastroMedulaOsseaPage'
+  },
 ]
 
 export default defineComponent({
