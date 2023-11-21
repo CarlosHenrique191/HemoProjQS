@@ -1,6 +1,34 @@
 <template>
   <q-page padding>
+    <header>
+    <p>Regras para doação de medula medula ossea</p>
+    </header>
+    <body>
+      <br>
+      <p>
+        - Ter entre 18 e 35 anos de idade
+      </p>
+      <p>
+        - Estar em bom estado de saúde
+      </p>
+      <p>
+        - Não ter doença infecciosa transmissível pelo sangue (como infecção pelo HIV ou hepatite)
+      </p>
+      <p>
+        - Não apresentar história de doença neoplásica (câncer), hematológica ou autoimune (como lúpus eritematoso sistêmico e artrite reumatoide).
+      </p>
+      <p>
+        <strong>
+          * Regras retiradas do site oficial da GOV : https://www.gov.br/inca/pt-br/acesso-a-informacao/perguntas-frequentes/doacao-de-medula-ossea
+        </strong>
+      </p>
+    </body>
     <div class="q-pa-md" style="max-width: 400px">
+
+      <h4>
+        Seja um doador
+      </h4>
+
     <q-form
       @submit="handleSubmit"
       class="q-gutter-md"
@@ -74,3 +102,21 @@ export default defineComponent ({
   }
 })
 </script>
+
+<style>
+
+p {
+  font-size: medium;
+}
+header {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding: .5rem 1rem;
+
+    p {
+      font-size:x-large;
+      margin-left: 1rem;
+    }
+  }
+
+</style>
