@@ -38,6 +38,15 @@ export default route(function (/* { store, ssrContext } */) {
       const token = accessToken.replace('#access_token=', '')
       return { path: '/resetpassword', query: { token } }
     }
+
+    /* if (
+      to.hash.includes('resetEmail')
+    ) {
+      const accessToken = to.hash.split('&')[0]
+      const token = accessToken.replace('#access_token=', '')
+      return { path: '/resetEmail', query: { token } }
+    } */
+
     if (
       !isLoggedIn() &&
       to.meta.requiresAuth &&

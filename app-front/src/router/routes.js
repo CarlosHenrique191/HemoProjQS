@@ -24,6 +24,10 @@ const routes = [
       { path: 'ExameRecentePage', component: () => import('src/pages/ExameRecentePage.vue') },
       { path: 'AtestadoPage', component: () => import('src/pages/AtestadoPage.vue') },
       { path: 'CadastroMedulaOsseaPage', component: () => import('src/pages/CadastroMedulaOsseaPage.vue') },
+      { path: 'perfil', component: () => import('src/pages/PerfilPage.vue') },
+      { path: 'resetEmail', component: () => import('src/pages/ResetEmailPage.vue') },
+      { path: 'resetNome', component: () => import('src/pages/ResetNomePage.vue') },
+      { path: 'emailChange', component: () => import('src/pages/EmailChangePage.vue') },
     ],
     meta: {
       requiresAuth: true

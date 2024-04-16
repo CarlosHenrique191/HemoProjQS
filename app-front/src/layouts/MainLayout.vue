@@ -69,6 +69,12 @@ const linksList = [
     path: '/home',
   },
   {
+    title: 'Perfil',
+    caption: 'Pagina de perfil',
+    icon: 'mdi-account',
+    path: '/perfil',
+  },
+  {
     title: 'Agendar',
     caption: 'Em manutenção',
     icon: 'mdi-blood-bag',

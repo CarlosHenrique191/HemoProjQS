@@ -42,12 +42,34 @@ export default function useAuthUser () {
         if(error) throw error
         return user
     }
+
     //UPDATE
-    const update = async (data) => {
-        const { user, error } = await supabase.auth.update(data)
+
+    //const update = async (data) => {
+    //    const { user, error } = await supabase.auth.update(data)
+    //    if (error) throw error
+    //    return user
+    //}
+
+    //UPDATE EMAIL
+    const updateEmail = async (email) => {
+        const { user, error } = await supabase.auth.updateUser({
+            email,
+        })
         if (error) throw error
         return user
     }
+    //UPDATE USERNAME
+    const updateName = async (...meta) => {
+        const { user, error } = await supabase.auth.updateUser({
+            options: {
+                data: meta,
+            }
+        })
+        if (error) throw error
+        return user
+    }
+
     //RESET PASSWORD
     const sendPasswordRestEmail = async (email) => {
         const { user, error } = await supabase.auth.resetPasswordForEmail(email)
@@ -71,8 +93,9 @@ export default function useAuthUser () {
         logout,
         isLoggedIn,
         register,
-        update,
         sendPasswordRestEmail,
-        resetPassword
+        resetPassword,
+        updateEmail,
+        updateName,
     }
 }

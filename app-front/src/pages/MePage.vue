@@ -2,7 +2,7 @@
   <q-page padding>
     <div v-if="user">
       <p>
-        Ola {{ user.user_metadata.name }}
+        Ola {{ user.user_metadata.username }}
       </p>
     </div>
   </q-page>

@@ -7,7 +7,7 @@
       <div class="col-md-4 col-sn-6 col-xs-10 q-gutter-y-md">
         <q-input
           label="Name"
-          v-model="form.name"
+          v-model="form.username"
           outlined
           rounded
           :rules="[val => (val && val.length > 0) || 'Nome é necessario']"
@@ -71,7 +71,7 @@ export default defineComponent({
     const form = ref({
       email: 'ferreira.h@aluno.ifsp.edu.br',
       password: '123456',
-      name: 'Carlos Henrique'
+      username: 'Carlos Henrique'
     })
     const handleRegister = async () => {
       try{
