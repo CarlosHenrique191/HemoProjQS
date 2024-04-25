@@ -25,9 +25,38 @@
       </p>
       <p>
         <strong>
-          * Regras retiradas do site oficial da GOV : https://www.gov.br/saude/pt-br/composicao/saes/sangue
+          * Regras retiradas do site oficial da GOV : <a href="https://www.gov.br/saude/pt-br/composicao/saes/sangue">https://www.gov.br/saude/pt-br/composicao/saes/sangue</a>
         </strong>
       </p>
+      <h5>
+        <strong>
+          Compartilhe o site e ajude a salvar vidas :
+        </strong>
+      </h5>
+        <div class="row">
+          <div class="full-width q-pt-md">
+            <q-btn
+              label="Compartilhe no Twitter"
+              color="blue"
+              class="full-width"
+              size="lg"
+              flat rounded
+              href="https://twitter.com/intent/tweet?url=http://localhost:8080/&text=Seja%20um%20doador%20acesse%20:"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="full-width q-pt-md">
+            <q-btn
+              label="Compartilhe no whatsapp"
+              color="green"
+              class="full-width"
+              size="lg"
+              flat rounded
+              href="https://api.whatsapp.com/send?text=[Doação de Sangue] [http://localhost:8080/]"
+            />
+          </div>
+        </div>
     </body>
   </q-page>
 </template>
